@@ -9,7 +9,7 @@
             color: #333;
         }
         h1, h2, h3 {
-            color: #4A90E2;
+            color: #33527E;
         }
         h1 {
             font-size: 3.8rem;
@@ -35,7 +35,7 @@
         }
         nav ul li a {
             text-decoration: none;
-            color: #4A90E2;
+            color: #33527E;
             font-weight: bold;
             transition: color 0.3s;
         }
@@ -78,7 +78,7 @@
             padding: 20px;
             border-radius: 10px;
             width: 80%;
-            max-width: 400px;
+            max-width: 600px;
             position: relative;
         }
         .close {
@@ -101,7 +101,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             border: 16px solid #f3f3f3;
-            border-top: 16px solid #4A90E2;
+            border-top: 16px solid #33527E;
             border-radius: 50%;
             width: 120px;
             height: 120px;
@@ -184,7 +184,7 @@
                     <li><strong>李越川 (Canyon Li) - Head of Educational Planning & Research Implementation:</strong> Canyon is responsible for the overall educational strategy and execution at Tech Insight Studio. He oversees the development of teaching content and research processes, ensuring the highest standards of quality in all courses.</li>
                     <li><strong>胡博溢 - Lead Content Developer & Learning Tools Designer:</strong> Boyi leads the creation of course materials, including the design and development of innovative learning tools. He also ensures content is regularly updated to meet the evolving needs of students.</li>
                     <li><strong>林俊锋 - Instructional Design & Student Feedback Analyst:</strong> Junfeng focuses on designing interactive teaching methods and analyzing student feedback. He plays a key role in optimizing the instructional approach and refining the research strategies to improve learning outcomes.</li>
-                    <li><strong>梁永晴 - Marketing Strategy & Platform Operations Manager:</strong> Yongqing is in charge of creating and implementing marketing strategies, managing customer service, and conducting market research. She also manages the studio's online platform, handles student feedback, and oversees the official account's operations and aesthetics.</li>
+                    <li><strong>梁温媛 - Marketing Strategy & Platform Operations Manager:</strong> Yongqing is in charge of creating and implementing marketing strategies, managing customer service, and conducting market research. She also manages the studio's online platform, handles student feedback, and oversees the official account's operations and aesthetics.</li>
                     <li><strong>陈添喆 - Website & Platform Manager:</strong> Tianzhe manages the technical aspects of Tech Insight Studio, including the maintenance of the official website and online platforms. He also coordinates promotional activities and ensures the smooth execution of digital initiatives.</li>
                 </ul>
             </div>
@@ -232,18 +232,18 @@
                 setTimeout(() => {
                     loadingSpinner.style.display = 'none';
                     fadeOverlay.style.display = 'block';
-                    fadeOverlay.style.animation = 'fadeSweep 0.5s ease-in-out';
+                    fadeOverlay.style.animation = 'fadeSweep 1.5s ease-in-out';
                     setTimeout(() => {
                         fadeOverlay.style.display = 'none';
                         applyTranslation();
-                    }, 500);
+                    }, 1500);
                 }, 500);
             }
 
             function applyTranslation() {
-                document.getElementById('course-precalculus').textContent = 'AP预备微积分';
-                document.getElementById('course-calculus-ab').textContent = 'AP微积分AB';
-                document.getElementById('course-calculus-bc').textContent = 'AP微积分BC';
+                document.getElementById('course-precalculus').textContent = 'AP预备微科学';
+                document.getElementById('course-calculus-ab').textContent = 'AP微科学AB';
+                document.getElementById('course-calculus-bc').textContent = 'AP微科学BC';
                 document.getElementById('course-physics-1').textContent = 'AP物理1';
                 document.getElementById('course-chemistry').textContent = 'AP化学';
                 document.getElementById('course-physics-c-mechanics').textContent = 'AP物理C力学';
@@ -251,27 +251,27 @@
                 const courseDescriptions = [
                     {
                         id: 'course-precalculus',
-                        text: '我们的AP预备微积分课程奠定了代数、几何和三角学概念的坚实基础。该课程涵盖函数、复数和圆锥曲线等主题，旨在为学生的高级微积分学习做好准备，为更高水平的数学学习铺平道路。'
+                        text: '我们的AP预备微科学课程坦实了代数、几何和三角学概念的坚实基础。该课程包含函数、复数和圆锡曲线等主题，时令为学生的高级微科学学习做好准备，为更高水平的数学学习铺平道路。'
                     },
                     {
                         id: 'course-calculus-ab',
-                        text: 'AP微积分AB介绍了微积分的基本原理，包括极限、导数、积分及其实际应用。该课程为学生提供了大学水平微积分所需的基本技能，强调概念理解和实际问题解决能力的结合。'
+                        text: 'AP微科学AB介绍了微科学的基本原理，包括极限、导数、积分及其实际应用。该课程为学生提供了大学水平微科学所需的基本技能，强调概念理解和实际问题解决能力的结合。'
                     },
                     {
                         id: 'course-calculus-bc',
-                        text: '我们的AP微积分BC课程在微积分AB的基础上进行了更深入的探讨，涉及高级积分技术、极坐标和无穷级数等内容。该课程非常适合希望掌握更全面微积分概念的学生，提供了解决复杂数学问题的分析工具。'
+                        text: '我们的AP微科学BC课程在微科学AB的基础上进行了更深入的探讨，涉及高级积分技术、极坐标和无穷系列等内容。该课程非常适合希望掌握更全面微科学概念的学生，提供了解决复杂数学问题的分析工具。'
                     },
                     {
                         id: 'course-physics-1',
-                        text: '在AP物理1课程中，学生将学习牛顿力学、旋转运动和能量守恒的基础知识。通过问题解决和动手实验，该课程为物理科学的进一步学习建立了坚实的基础。'
+                        text: '在AP物理1课程中，学生将学习牛顿力学、旋转运动和能量守恒的基础知识。通过问题解决和动手实验，该课程为物理科学的进一步学习打了坚实的基础。'
                     },
                     {
                         id: 'course-chemistry',
-                        text: 'AP化学课程深入探索化学原理、反应和实验技术。从原子结构到热力学和动力学，该课程帮助学生深入理解化学的核心概念，为任何STEM相关的学术路径打下坚实基础。'
+                        text: 'AP化学课程深入探索了化学原理、反应和实验技术。从原子结构到热力学和动力学，该课程帮助学生深入理解化学的核心概念，为任何STEM相关的学术路径打了坚实基础。'
                     },
                     {
                         id: 'course-physics-c-mechanics',
-                        text: 'AP物理C力学专注于经典力学的基本原理，涵盖运动学、牛顿定律、能量与动量等主题。该课程结合微积分，深入探讨力的应用与运动的数学表达，旨在为学生提供大学物理的坚实基础，尤其是工程或物理学相关专业的学生。'
+                        text: 'AP物理C力学专注于经典力学的基本原理，包括运动学、牛顿律、能量和动量等主题。该课程结合微科学，深入探讨力的应用与运动的数学表达，主要是为追求大学物理（尤其是工程或物理相关专业）的学生打下坚实基础。'
                     }
                 ];
 
@@ -282,17 +282,17 @@
                     }
                 });
 
-                document.querySelector('h1').textContent = '欢迎来到科技启迪教育工作室';
+                document.querySelector('h1').textContent = '欢迎来到科技启达教育工作室';
                 document.querySelector('h2').textContent = '我们的课程';
                 document.querySelector('#about h2').textContent = '关于我们';
-                document.querySelector('#about-us-text p').textContent = '科技启迪教育工作室由李越川（Canyon Li）创立，是一个由才华横溢的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生实现学术目标。';
+                document.querySelector('#about-us-text p').textContent = '科技启达教育工作室由李越川（Canyon Li）创立，是一个由才华源流的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生完成学术目标。';
                 const aboutUsList = document.querySelector('#about-us-text ul');
                 aboutUsList.innerHTML = `
-                    <li><strong>李越川（Canyon Li） 教育规划与研究执行负责人:</strong> 李越川负责科技启迪教育工作室的整体教育战略和执行。他监督教学内容的开发和研究过程，确保所有课程的高质量标准。</li>
-                    <li><strong>胡博溢 首席内容开发与学习工具设计师:</strong> 博溢负责课程材料的创作，包括设计和开发创新的学习工具。他还确保内容定期更新，以满足学生不断变化的需求。</li>
+                    <li><strong>李越川（Canyon Li） 教育规划与研究执行负责人:</strong> 李越川负责科技启达教育工作室的整体教育策略和执行。他监督教学内容的开发和研究过程，确保所有课程的高质量标准。</li>
+                    <li><strong>胡博溢 首席内容开发与学习工具设计师:</strong> 博溢负责课程材料的创作，包括设计和开发创新的学习工具。他还确保内容常规更新，以满足学生不断变化的需求。</li>
                     <li><strong>林俊锋 教学设计与学生反馈分析师:</strong> 俊锋专注于设计互动教学方法并分析学生反馈。他在优化教学方法和改进研究策略以提高学习成果方面发挥了重要作用。</li>
-                    <li><strong>梁永晴 市场策略与平台运营经理:</strong> 永晴负责制定和实施市场策略，管理客户服务并进行市场调研。她还管理工作室的在线平台，处理学生反馈，并负责官方账号的运营和美学设计。</li>
-                    <li><strong>陈添喆 网站与平台管理员:</strong> 添喆负责管理科技启迪教育工作室的技术方面工作，包括维护官方网站和在线平台。他还协调宣传活动，确保数字项目的顺利执行。</li>
+                    <li><strong>梁温媛 市场策略与平台运营经理:</strong> 温媛负责制定和实施市场策略，管理客户服务并进行市场调研。她还管理工作室的在线平台，处理学生反馈，并负责官方账号的运营和美学设计。</li>
+                    <li><strong>陈添喆 网站与平台管理员:</strong> 添喆负责管理科技启达教育工作室的技术方面工作，包括维护官方网站和在线平台。他还协调宣传活动，确保数字项目的顺利执行。</li>
                 `;
                 document.querySelector('#contact h2').textContent = '联系我们';
                 document.querySelector('#contact-us-text p').textContent = '如果您有任何问题，请通过我们的联系表格联系我们，或者发送电子邮件到 contact@techinsightstudio.com。';
