@@ -93,9 +93,43 @@
         .close:hover, .close:focus {
             color: #000;
         }
+        .loading {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #4A90E2;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fade-overlay {
+            position: fixed;
+            z-index: 1500;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: none;
+        }
+        @keyframes fadeSweep {
+            0% { height: 0; }
+            100% { height: 100%; }
+        }
     </style>
 </head>
 <body style="background: url('RBG.jpg') no-repeat center center fixed; background-size: cover;">
+    <div class="loading" id="loadingSpinner"></div>
+    <div class="fade-overlay" id="fadeOverlay"></div>
     <header style="text-align: center; padding: 20px;">
         <div class="logo">
             <img src="logo.png" alt="Tech Insight Studio Logo">
@@ -178,6 +212,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('translationModal');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const fadeOverlay = document.getElementById('fadeOverlay');
             setTimeout(() => {
                 modal.style.display = 'flex';
             }, 500);
@@ -185,71 +221,83 @@
             document.getElementById('closeModalButton').addEventListener('click', closeModal);
             document.getElementById('yesButton').addEventListener('click', translatePage);
             document.getElementById('noButton').addEventListener('click', closeModal);
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function translatePage() {
+                closeModal();
+                loadingSpinner.style.display = 'block';
+                setTimeout(() => {
+                    loadingSpinner.style.display = 'none';
+                    fadeOverlay.style.display = 'block';
+                    fadeOverlay.style.animation = 'fadeSweep 0.5s ease-in-out';
+                    setTimeout(() => {
+                        fadeOverlay.style.display = 'none';
+                        applyTranslation();
+                    }, 500);
+                }, 500);
+            }
+
+            function applyTranslation() {
+                document.getElementById('course-precalculus').textContent = 'AP预备微积分';
+                document.getElementById('course-calculus-ab').textContent = 'AP微积分AB';
+                document.getElementById('course-calculus-bc').textContent = 'AP微积分BC';
+                document.getElementById('course-physics-1').textContent = 'AP物理1';
+                document.getElementById('course-chemistry').textContent = 'AP化学';
+                document.getElementById('course-physics-c-mechanics').textContent = 'AP物理C力学';
+
+                const courseDescriptions = [
+                    {
+                        id: 'course-precalculus',
+                        text: '我们的AP预备微积分课程奠定了代数、几何和三角学概念的坚实基础。该课程涵盖函数、复数和圆锥曲线等主题，旨在为学生的高级微积分学习做好准备，为更高水平的数学学习铺平道路。'
+                    },
+                    {
+                        id: 'course-calculus-ab',
+                        text: 'AP微积分AB介绍了微积分的基本原理，包括极限、导数、积分及其实际应用。该课程为学生提供了大学水平微积分所需的基本技能，强调概念理解和实际问题解决能力的结合。'
+                    },
+                    {
+                        id: 'course-calculus-bc',
+                        text: '我们的AP微积分BC课程在微积分AB的基础上进行了更深入的探讨，涉及高级积分技术、极坐标和无穷级数等内容。该课程非常适合希望掌握更全面微积分概念的学生，提供了解决复杂数学问题的分析工具。'
+                    },
+                    {
+                        id: 'course-physics-1',
+                        text: '在AP物理1课程中，学生将学习牛顿力学、旋转运动和能量守恒的基础知识。通过问题解决和动手实验，该课程为物理科学的进一步学习建立了坚实的基础。'
+                    },
+                    {
+                        id: 'course-chemistry',
+                        text: 'AP化学课程深入探索化学原理、反应和实验技术。从原子结构到热力学和动力学，该课程帮助学生深入理解化学的核心概念，为任何STEM相关的学术路径打下坚实基础。'
+                    },
+                    {
+                        id: 'course-physics-c-mechanics',
+                        text: 'AP物理C力学专注于经典力学的基本原理，涵盖运动学、牛顿定律、能量与动量等主题。该课程结合微积分，深入探讨力的应用与运动的数学表达，旨在为学生提供大学物理的坚实基础，尤其是工程或物理学相关专业的学生。'
+                    }
+                ];
+
+                courseDescriptions.forEach(function(course) {
+                    const courseElement = document.querySelector(`[aria-labelledby="${course.id}"] p`);
+                    if (courseElement) {
+                        courseElement.textContent = course.text;
+                    }
+                });
+
+                document.querySelector('h1').textContent = '欢迎来到科技启迪教育工作室';
+                document.querySelector('h2').textContent = '我们的课程';
+                document.querySelector('#about h2').textContent = '关于我们';
+                document.querySelector('#about-us-text p').textContent = '科技启迪教育工作室由李越川（Canyon Li）创立，是一个由才华横溢的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生实现学术目标。';
+                const aboutUsList = document.querySelector('#about-us-text ul');
+                aboutUsList.innerHTML = `
+                    <li><strong>李越川（Canyon Li） 教育规划与研究执行负责人:</strong> 李越川负责科技启迪教育工作室的整体教育战略和执行。他监督教学内容的开发和研究过程，确保所有课程的高质量标准。</li>
+                    <li><strong>胡博溢 首席内容开发与学习工具设计师:</strong> 博溢负责课程材料的创作，包括设计和开发创新的学习工具。他还确保内容定期更新，以满足学生不断变化的需求。</li>
+                    <li><strong>林俊锋 教学设计与学生反馈分析师:</strong> 俊锋专注于设计互动教学方法并分析学生反馈。他在优化教学方法和改进研究策略以提高学习成果方面发挥了重要作用。</li>
+                    <li><strong>梁永晴 市场策略与平台运营经理:</strong> 永晴负责制定和实施市场策略，管理客户服务并进行市场调研。她还管理工作室的在线平台，处理学生反馈，并负责官方账号的运营和美学设计。</li>
+                    <li><strong>陈添喆 网站与平台管理员:</strong> 添喆负责管理科技启迪教育工作室的技术方面工作，包括维护官方网站和在线平台。他还协调宣传活动，确保数字项目的顺利执行。</li>
+                `;
+                document.querySelector('#contact h2').textContent = '联系我们';
+                document.querySelector('#contact-us-text p').textContent = '如果您有任何问题，请通过我们的联系表格联系我们，或者发送电子邮件到 contact@techinsightstudio.com。';
+            }
         });
-
-        function closeModal() {
-            const modal = document.getElementById('translationModal');
-            modal.style.display = 'none';
-        }
-
-        function translatePage() {
-            closeModal();
-            document.getElementById('course-precalculus').textContent = 'AP预备微积分';
-            document.getElementById('course-calculus-ab').textContent = 'AP微积分AB';
-            document.getElementById('course-calculus-bc').textContent = 'AP微积分BC';
-            document.getElementById('course-physics-1').textContent = 'AP物理1';
-            document.getElementById('course-chemistry').textContent = 'AP化学';
-            document.getElementById('course-physics-c-mechanics').textContent = 'AP物理C力学';
-
-            const courseDescriptions = [
-                {
-                    id: 'course-precalculus',
-                    text: '我们的AP预备微积分课程奠定了代数、几何和三角学概念的坚实基础。该课程涵盖函数、复数和圆锥曲线等主题，旨在为学生的高级微积分学习做好准备，为更高水平的数学学习铺平道路。'
-                },
-                {
-                    id: 'course-calculus-ab',
-                    text: 'AP微积分AB介绍了微积分的基本原理，包括极限、导数、积分及其实际应用。该课程为学生提供了大学水平微积分所需的基本技能，强调概念理解和实际问题解决能力的结合。'
-                },
-                {
-                    id: 'course-calculus-bc',
-                    text: '我们的AP微积分BC课程在微积分AB的基础上进行了更深入的探讨，涉及高级积分技术、极坐标和无穷级数等内容。该课程非常适合希望掌握更全面微积分概念的学生，提供了解决复杂数学问题的分析工具。'
-                },
-                {
-                    id: 'course-physics-1',
-                    text: '在AP物理1课程中，学生将学习牛顿力学、旋转运动和能量守恒的基础知识。通过问题解决和动手实验，该课程为物理科学的进一步学习建立了坚实的基础。'
-                },
-                {
-                    id: 'course-chemistry',
-                    text: 'AP化学课程深入探索化学原理、反应和实验技术。从原子结构到热力学和动力学，该课程帮助学生深入理解化学的核心概念，为任何STEM相关的学术路径打下坚实基础。'
-                },
-                {
-                    id: 'course-physics-c-mechanics',
-                    text: 'AP物理C力学专注于经典力学的基本原理，涵盖运动学、牛顿定律、能量与动量等主题。该课程结合微积分，深入探讨力的应用与运动的数学表达，旨在为学生提供大学物理的坚实基础，尤其是工程或物理学相关专业的学生。'
-                }
-            ];
-
-            courseDescriptions.forEach(function(course) {
-                const courseElement = document.querySelector(`[aria-labelledby="${course.id}"] p`);
-                if (courseElement) {
-                    courseElement.textContent = course.text;
-                }
-            });
-
-            document.querySelector('h1').textContent = '欢迎来到科技启达教育工作室';
-            document.querySelector('h2').textContent = '我们的课程';
-            document.querySelector('#about h2').textContent = '关于我们';
-            document.querySelector('#about-us-text p').textContent = '科技启迪教育工作室由李越川（Canyon Li）创立，是一个由才华横溢的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生实现学术目标。';
-            const aboutUsList = document.querySelector('#about-us-text ul');
-            aboutUsList.innerHTML = `
-                <li><strong>李越川（Canyon Li） 教育规划与研究执行负责人:</strong> 李越川负责科技启迪教育工作室的整体教育战略和执行。他监督教学内容的开发和研究过程，确保所有课程的高质量标准。</li>
-                <li><strong>胡博溢 首席内容开发与学习工具设计师:</strong> 博溢负责课程材料的创作，包括设计和开发创新的学习工具。他还确保内容定期更新，以满足学生不断变化的需求。</li>
-                <li><strong>林俊锋 教学设计与学生反馈分析师:</strong> 俊锋专注于设计互动教学方法并分析学生反馈。他在优化教学方法和改进研究策略以提高学习成果方面发挥了重要作用。</li>
-                <li><strong>梁永晴 市场策略与平台运营经理:</strong> 永晴负责制定和实施市场策略，管理客户服务并进行市场调研。她还管理工作室的在线平台，处理学生反馈，并负责官方账号的运营和美学设计。</li>
-                <li><strong>陈添喆 网站与平台管理员:</strong> 添喆负责管理科技启迪教育工作室的技术方面工作，包括维护官方网站和在线平台。他还协调宣传活动，确保数字项目的顺利执行。</li>
-            `;
-            document.querySelector('#contact h2').textContent = '联系我们';
-            document.querySelector('#contact-us-text p').textContent = '如果您有任何问题，请通过我们的联系表格联系我们，或者发送电子邮件到 contact@techinsightstudio.com。';
-        }
     </script>
 </body>
 </html>
