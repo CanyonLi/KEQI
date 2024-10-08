@@ -11,6 +11,10 @@
         }
         h1, h2, h3 {
             color: #33527E;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
         }
         h1 {
             font-size: 3.8rem;
@@ -85,7 +89,7 @@
         }
         .course-image {
             width: 350px;
-            height: 300px;
+            height: 350px;
             border: 1px solid #ddd;
             border-radius: 10px;
             background-color: #eee;
@@ -95,6 +99,12 @@
             transition: transform 0.5s ease-in-out;
             cursor: pointer;
             position: absolute;
+            overflow: hidden;
+        }
+        .course-image img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
         }
         .course-image:nth-child(1) {
             top: -20px;
@@ -290,10 +300,10 @@
                     </div>
                     <div class="course-holder">
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 1</p>
+                            <img src="AQA Precalc.png" alt="AP Precalculus">
                         </div>
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 2</p>
+                            <img src="PreCalc2.png" alt="AP Precalculus Additional">
                         </div>
                     </div>
                 </div>
@@ -304,10 +314,10 @@
                     </div>
                     <div class="course-holder">
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 1</p>
+                            <img src="Calc AB.png" alt="AP Calculus AB">
                         </div>
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 2</p>
+                            <img src="Calc AB2.png" alt="AP Calculus AB Additional">
                         </div>
                     </div>
                 </div>
@@ -318,10 +328,10 @@
                     </div>
                     <div class="course-holder">
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 1</p>
+                            <img src="Calc BC.png" alt="AP Calculus BC">
                         </div>
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 2</p>
+                            <img src="Calc BC2.png" alt="AP Calculus BC Additional">
                         </div>
                     </div>
                 </div>
@@ -332,10 +342,10 @@
                     </div>
                     <div class="course-holder">
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 1</p>
+                            <img src="Physics 1.png" alt="AP Physics 1">
                         </div>
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 2</p>
+                            <img src="Physics 1-2.png" alt="AP Physics 1 Additional">
                         </div>
                     </div>
                 </div>
@@ -346,10 +356,10 @@
                     </div>
                     <div class="course-holder">
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 1</p>
+                            <img src="Chem.png" alt="AP Chemistry">
                         </div>
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 2</p>
+                            <img src="Chem2.png" alt="AP Chemistry Additional">
                         </div>
                     </div>
                 </div>
@@ -360,10 +370,10 @@
                     </div>
                     <div class="course-holder">
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 1</p>
+                            <img src="PhyC.png" alt="AP Physics C Mechanics">
                         </div>
                         <div class="course-image" onclick="swapImages(this)">
-                            <p>Image Placeholder 2</p>
+                            <img src="PhyC2.png" alt="AP Physics C Mechanics Additional">
                         </div>
                     </div>
                 </div>
