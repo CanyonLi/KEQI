@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <style>
         body {
@@ -253,6 +254,47 @@
         }
         .fade-in-text {
             animation: fadeInText 3s ease-in-out;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-size: contain;
+                background-attachment: scroll;
+            }
+            .course-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .course-holder {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            .course-image {
+                width: 100%;
+                height: auto;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            p, nav ul li a {
+                font-size: 1rem;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin-bottom: 10px;
+            }
+        }
+        @media (max-width: 1024px) {
+            .course-row {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
