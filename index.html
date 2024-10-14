@@ -28,24 +28,12 @@
         }
         p { background-color: rgba(200, 200, 200, 0.2); padding: 15px; border-radius: 10px; text-align: center; }
         nav ul {
-            display: none;
-            flex-direction: column;
+            display: flex;
+            justify-content: center;
             gap: 20px;
             list-style-type: none;
             padding: 0;
             margin: 0;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            z-index: 1000;
-            transform: translateX(100%);
-            transition: transform 0.5s ease-in-out;
-        }
-        nav ul.active {
-            transform: translateX(0);
         }
         nav ul li a {
             text-decoration: none;
@@ -59,32 +47,6 @@
         }
         nav ul li a:hover {
             color: #555;
-        }
-        .hamburger-menu {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2000;
-        }
-        .hamburger-menu span {
-            height: 3px;
-            width: 25px;
-            background-color: #33527E;
-            margin: 5px 0;
-            transition: 0.4s;
-        }
-        .hamburger-menu.open span:nth-child(1) {
-            transform: rotate(45deg) translateY(8px);
-        }
-        .hamburger-menu.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-menu.open span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-8px);
         }
         .course-container {
             display: flex;
@@ -228,6 +190,24 @@
         #about-us-text ul li:last-child {
             border-bottom: none;
         }
+        #mission {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+        }
+        #mission-text {
+            font-size: 1.2rem;
+            padding: 40px 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 4px solid #33527E;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-align: justify;
+            
+        }
         #contact {
             text-align: center;
             padding: 20px 0;
@@ -366,16 +346,12 @@
             <img src="logo.png" alt="Tech Insight Studio Logo">
         </div>
         <h1>Welcome to Tech Insight Studio</h1>
-        <div class="hamburger-menu" id="hamburgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav aria-label="Main Navigation" id="mainNav">
+        <nav aria-label="Main Navigation">
             <ul>
                 <li><a href="#home">Home/主页</a></li>
                 <li><a href="#courses">Courses/课程</a></li>
                 <li><a href="#about">About Us/关于我们</a></li>
+                <li><a href="#mission">Our Mission/我们的使命</a></li>
                 <li><a href="#feedback">Feedback/反馈</a></li>
                 <li><a href="#contact">Contact/联系我们</a></li>
             </ul>
@@ -383,6 +359,15 @@
     </header>
 
     <main>
+        <section id="mission">
+            <h2>Our Mission</h2>
+            <div id="mission-text">
+                <p>
+                    At Tech Insight Studio, we are dedicated to transforming education through innovative technology. Our mission is to empower students by providing accessible, personalized learning resources that nurture their potential. 
+                    We believe in the power of education to unlock human creativity and innovation, and we strive to be at the forefront of this educational revolution.
+                </p>
+            </div>
+        </section>
         <section id="courses">
             <h2>Our Courses</h2>
             <div class="course-container">
@@ -514,19 +499,92 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerMenu = document.getElementById('hamburgerMenu');
-            const mainNav = document.getElementById('mainNav');
+            const modal = document.getElementById('translationModal');
+            const fadeOverlay = document.getElementById('fadeOverlay');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const courseElements = Array.from(document.querySelectorAll('[aria-labelledby^="course-"] p')).reduce((acc, el) => {
+                const key = el.parentElement.getAttribute('aria-labelledby');
+                acc[key] = el;
+                return acc;
+            }, {});
 
-            hamburgerMenu.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-                this.classList.toggle('open');
-            });
+            modal.style.display = 'flex';
 
-            document.getElementById('feedback-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                alert('Thank you for your feedback! We will get back to you shortly.');
-                document.getElementById('feedback-form').reset();
-            });
+            document.getElementById('closeModalButton').addEventListener('click', closeModal);
+            document.getElementById('yesButton').addEventListener('click', translatePage);
+            document.getElementById('noButton').addEventListener('click', closeModal);
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function translatePage() {
+                closeModal();
+                loadingSpinner.style.display = 'block';
+                setTimeout(() => {
+                    loadingSpinner.style.display = 'none';
+                    fadeOverlay.style.display = 'none';
+                    applyTranslation();
+                }, 500);
+                fadeOverlay.style.display = 'block';
+            }
+
+            function applyTranslation() {
+                for (const key in courseElements) {
+                    if (courseElements.hasOwnProperty(key)) {
+                        courseElements[key].classList.add('fade-in-text');
+                    }
+                }
+                document.getElementById('course-precalculus').textContent = 'AP微积分预科';
+                document.getElementById('course-calculus-ab').textContent = 'AP微积分(AB)';
+                document.getElementById('course-calculus-bc').textContent = 'AP微积分(BC)';
+                document.getElementById('course-physics-1').textContent = 'AP物理1';
+                document.getElementById('course-chemistry').textContent = 'AP化学';
+                document.getElementById('course-physics-c-mechanics').textContent = 'AP物理C力学';
+
+                courseElements['course-precalculus'].textContent = '我们的AP预备微积分课程奠定了代数、几何和三角学概念的坚实基础。该课程汇集函数、复数和圆锥曲线等主题，旨在为学生的高级微科学学习做好准备，为更高水平的数学学习铺平道路。';
+                courseElements['course-calculus-ab'].textContent = 'AP微分AB介绍了微分的基本原理，包括极限、微分、积分及其实际应用。该课程为学生提供了大学水平微分所需的基本技能，强调概念理解和实际问题解决能力的结合。';
+                courseElements['course-calculus-bc'].textContent = '我们的AP微分BC课程在微分AB的基础上进行了更深入的探讨，涉及高级积分技术、极坐标和无穷级数等内容。该课程非常适合希望掌握更全面微分概念的学生，提供了解决复杂数学问题的分析工具。';
+                courseElements['course-physics-1'].textContent = '在AP物理1课程中，学生将学习牛顿力学、旋转运动和能量守恒的基础知识。通过问题解决和动手实验，该课程为物理科学的进一步学习建立了坚实基础。';
+                courseElements['course-chemistry'].textContent = 'AP化学课程深入探索化学原理、反应和实验技术。从原子结构到热力学和动力学，该课程帮助学生深入理解化学的核心概念，为任何STEM相关的学术路径打下坚实基础。';
+                courseElements['course-physics-c-mechanics'].textContent = 'AP物理C力学专注于经典力学的基本原理，包含运动学、牛顿律、能量和动量等主题。该课程结合微分，深入探讨力的应用与运动的数学表达，旨在为学生提供大学物理的坚实基础，尤其是工程或物理学相关专业的学生。';
+
+                document.querySelector('h1').textContent = '欢迎来到科技启迪教育工作室';
+                document.querySelector('h2').textContent = '我们的使命';
+                document.querySelector('h3').textContent = '我们的课程';
+                document.querySelector('#about h2').textContent = '关于我们';
+                document.querySelector('#about-us-text p').textContent = '科技启迪教育工作室由李越川（Canyon Li）创立，是一个由才华汇润的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生完成他们的学术目标。';
+                const aboutUsList = document.querySelector('#about-us-text ul');
+                aboutUsList.innerHTML = `
+                    <li><strong>李越川（Canyon Li） 教育规划与研究执行负责人:</strong><br> 李越川负责科技启迪教育工作室的整体教育策略和执行。他监督教学内容的开发和研究过程，确保所有课程的高质量标准。</li>
+                    <li><a href="#" id="canyon-more-link" onclick="showCanyonModal()" style="color: #33527E; text-decoration: underline;">查看更多关于李越川的信息</a></li>
+                    <li><strong>胡博溢 首席内容开发与学习工具设计师:</strong><br> 博溢负责课程材料的创作，包括设计和开发创新的学习工具。他还确保内容常时更新，以满足学生不断变化的需求。</li>
+                    <li><strong>林俊锋 教学设计与学生反馈分析师:</strong><br> 俊锋专注于设计互动教学方法并分析学生反馈。他在优化教学方法和改进研究策略以提高学习成果方面发挥重要作用。</li>
+                    <li><strong>梁永晴 市场策略与平台运营经理:</strong><br> 永晴负责制定和实施市场策略，管理客户服务并进行市场调研。她还管理工作室的在线平台，处理学生反馈，并负责官方账号的运营和美学设计。</li>
+                    <li><strong>陈添喆 网站与平台管理员:</strong><br> 添喆负责管理科技启达教育工作室的技术方面工作，包括维护官方网站和在线平台。他还协调宣传活动，确保数字项目的顺利执行。</li>
+                `;
+                document.querySelector('#contact h2').textContent = '联系我们';
+                document.querySelector('#contact-us-text').innerHTML = '如果您有任何问题，请通过我们的联系表格联系我们，或者发送电子邮件至 <a href="mailto:contact@techinsightstudio.com">contact@techinsightstudio.com</a>。';
+                document.querySelector('#feedback h2').textContent = '反馈';
+                document.querySelector('#feedback-form-container p').textContent = '我们非常重视您的反馈！请分享您的想法，帮助我们改进。';
+                document.querySelector('#feedback-form label[for="feedback-name"]').textContent = '姓名';
+                document.querySelector('#feedback-form label[for="feedback-email"]').textContent = '电子邮件';
+                document.querySelector('#feedback-form label[for="feedback-message"]').textContent = '留言';
+                document.querySelector('#feedback-form button').textContent = '提交反馈';
+            }
+        });
+
+        function swapImages(clickedElement) {
+            const images = clickedElement.parentElement.children;
+            for (let i = 0; i < images.length; i++) {
+                images[i].classList.toggle('active');
+            }
+        }
+
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for your feedback! We will get back to you shortly.');
+            document.getElementById('feedback-form').reset();
         });
 
         function showCanyonModal() {
@@ -535,13 +593,6 @@
 
         function closeCanyonModal() {
             document.getElementById('canyonModal').style.display = 'none';
-        }
-
-        function swapImages(clickedElement) {
-            const images = clickedElement.parentElement.children;
-            for (let i = 0; i < images.length; i++) {
-                images[i].classList.toggle('active');
-            }
         }
     </script>
 </body>
