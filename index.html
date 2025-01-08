@@ -535,6 +535,33 @@
                         courseElements[key].classList.add('fade-in-text');
                     }
                 }
+                // 修正标题
+                document.querySelector('h2').textContent = '李越川的背景与成就';
+
+                // 更新内容
+                const personalContent = document.querySelector('.scrollable-content');
+                personalContent.innerHTML = `
+                    <h3 style="text-align: left; font-size: 1.8rem;">李越川 - 创始人及主任</h3>
+                    <p style="text-align: left;"><strong>教育背景：</strong><br>
+                    斯坦福大学（Stanford University），2029 届<br>
+                    亚利桑那州图森市 Vail Academy and High School，2025 届<br>
+                    潜在专业方向：人工智能（AI）、教育学、管理科学与工程（MSE）、计算与应用数学（CAM）、运筹学（OR）
+                    </p>
+                    <p style="text-align: left;"><strong>荣誉与奖项：</strong><br>
+                    - 高中 11 年级自学并顺利完成 12 门 AP/大学课程，展现卓越的自学与学术研究能力<br>
+                    - 入选 2024 年美国物理国家队并参与第 54 届国际物理奥林匹克竞赛<br>
+                    - 成为 2024 年美国化学奥林匹克（USNCO）全国考试亚利桑那州南部赛区前六名代表之一<br>
+                    - 在 2022-2023 年度全美未来商业领袖（FBLA）州级领导力大会（SLC）数据分析比赛中斩获亚军，并于全国领导力大会（NLC）闯入前 30 强<br>
+                    - 因对质子交换膜燃料电池（PEMFC）的研究成果，荣获 2024 年美国航空航天学会“科学与工程研究卓越奖”<br>
+                    - 在 Desmos 平台上开发了 13 组与 AP 微积分 AB/BC 相关的可视化教学模型，致力于帮助高中及大学学生深入理解微积分与线性代数的核心概念
+                    </p>
+                    <p style="text-align: left;"><strong>领导力与课外活动经历：</strong><br>
+                    - 担任亚利桑那州 FBLA 州级理事会赞助与财务总监，负责资源拓展及财务规划<br>
+                    - 担任 Vail Academy and High School 科学奥林匹克竞赛队主席，带领团队在 2024 年南亚利桑那州地区赛中跻身前六<br>
+                    - 担任 Vail Academy and High School FBLA 分会主席及竞赛总监，统筹分会事务，推动职业发展与社区参与<br>
+                    - 在理工科 STEM 相关领域累计超 100 小时的辅导与教学经验<br>
+                    - 美国高中国家荣誉社团（NHS）成员
+                    </p>`;
                 document.getElementById('course-precalculus').textContent = 'AP微积分预科';
                 document.getElementById('course-calculus-ab').textContent = 'AP微积分(AB)';
                 document.getElementById('course-calculus-bc').textContent = 'AP微积分(BC)';
@@ -550,10 +577,13 @@
                 courseElements['course-physics-c-mechanics'].textContent = 'AP物理C力学专注于经典力学的基本原理，包含运动学、牛顿律、能量和动量等主题。该课程结合微分，深入探讨力的应用与运动的数学表达，旨在为学生提供大学物理的坚实基础，尤其是工程或物理学相关专业的学生。';
 
                 document.querySelector('h1').textContent = '欢迎来到科技启迪教育工作室';
-                document.querySelector('h2').textContent = '我们的使命';
-                document.querySelector('h3').textContent = '我们的课程';
+                document.querySelector('#mission h2').textContent = '我们的使命';
+                document.querySelector('#courses h2').textContent = '我们的课程';
+                document.querySelector('h3').textContent = '李越川 - 创始人兼执行官';
                 document.querySelector('#about h2').textContent = '关于我们';
-                document.querySelector('#about-us-text p').textContent = '科技启迪教育工作室由李越川（Canyon Li）创立，是一个由才华汇润的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生完成他们的学术目标。';
+                document.querySelector('#mission-text').textContent = '在科技启迪工作室，我们致力于以创新科技驱动教育变革。我们的使命是为学生提供触手可及、个性化的学习资源，全面激发并培育他们的潜能。我们深信教育蕴藏着释放人类创造力与创新力的伟大力量，并矢志走在这场教育革命的前沿，引领未来学习方式的转型与发展。';
+                const aboutUsText = document.querySelector('#about-us-text p');
+                        aboutUsText.textContent = '科技启迪教育工作室由李越川（Canyon Li）创立，是一个由才华汇润的高中生组成的团队，致力于通过技术和灵感来改革教育。在一群充满激情的教育者和创新者的支持下，我们努力提供高质量、个性化的AP STEM课程，帮助学生完成他们的学术目标。';
                 const aboutUsList = document.querySelector('#about-us-text ul');
                 aboutUsList.innerHTML = `
                     <li><strong>李越川（Canyon Li） 教育规划与研究执行负责人:</strong><br> 李越川负责科技启迪教育工作室的整体教育策略和执行。他监督教学内容的开发和研究过程，确保所有课程的高质量标准。</li>
