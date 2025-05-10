@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <style>
+        section {
+            margin-bottom: 80px;
+        }
         body {
             font-family: 'Arial', sans-serif;
             color: #333;
@@ -163,6 +166,29 @@
             text-align: center;
             padding: 40px 20px;
             width: 100%;
+        }
+        #ap-tutoring {
+            padding: 60px 0;
+            margin-bottom: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #ap-tutoring h2 {
+            text-align: center;
+        }
+
+        #ap-tutoring .tutoring-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 4px solid #33527E;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: left;
         }
         #about {
             text-align: center;
@@ -357,6 +383,7 @@
             <ul>
                 <li><a href="#home">Home/主页</a></li>
                 <li><a href="#courses">Courses/课程</a></li>
+                <li><a href="#ap-tutoring">1-1 AP Tutoring Service/AP 一对一辅导服务</a></li>
                 <li><a href="#about">About Us/关于我们</a></li>
                 <li><a href="#mission">Our Mission/我们的使命</a></li>
                 <li><a href="#testimonials">Student Testimonials/学生测试</a></li>
@@ -465,7 +492,42 @@
                 </div>
             </div>
         </section>
-
+        <section id="ap-tutoring">
+            <h2>1-on-1 AP Tutoring Service</h2>
+            <div class="tutoring-box">
+                <h3>Personalized 1-on-1 AP Tutoring Service</h3>
+                <p><strong>Price:</strong> ¥500 CNY / $50 USD per hour<br>
+                <em>✨ Enjoy 10% off your first trial session!</em></p>
+                <p><strong>Conquering AP exams takes more than just memorization.</strong> With KEQI’s personalized 1-on-1 tutoring, students get targeted support, real-time feedback, and expert guidance tailored to their unique needs — from Calculus to Physics and Chemistry.</p>
+                <h4>What's Included:</h4>
+                <ul>
+                    <li>✅ <strong>Subjects:</strong> AP Calculus AB/BC, Physics C, Chemistry, Precalc, and more</li>
+                    <li>🧑‍🏫 <strong>Format:</strong> Live 1-on-1 online sessions (Zoom / Google Meet)</li>
+                    <li>🌍 <strong>Language:</strong> English & Chinese bilingual instruction</li>
+                    <li>📄 <strong>Extras:</strong> Post-lesson summaries, error analysis reports, on-demand Q&A</li>
+                    <li>🕐 <strong>Billing:</strong> Hourly — ¥500 or $50/hour</li>
+                </ul>
+                <h4>Ideal For:</h4>
+                <ul>
+                    <li>📘 High school students preparing for AP exams</li>
+                    <li>📈 Self-learners needing structure and expert support</li>
+                    <li>🌏 International students who benefit from bilingual instruction</li>
+                </ul>
+                <h4>Why Choose KEQI?</h4>
+                <ul>
+                    <li>🌟 Tutors include national award winners, Stanford admits, and USAPhO/USNCO participants</li>
+                    <li>📚 Over 100 hours of experience in AP/competition-level tutoring</li>
+                    <li>🧠 Specialists in visual tools like Desmos & GeoGebra for enhanced understanding</li>
+                </ul>
+                <h4>Tutoring Process:</h4>
+                <ol>
+                    <li>✅ Free consultation and skill assessment</li>
+                    <li>✅ Personalized study plan</li>
+                    <li>✅ Schedule 1-on-1 session</li>
+                    <li>✅ Receive a post-lesson progress report</li>
+                </ol>
+            </div>
+        </section>
         <section id="about">
             <h2>About Us</h2>
             <div id="about-us-text">
@@ -600,7 +662,44 @@
                 courseElements['course-physics-1'].textContent = '在AP物理1课程中，学生将学习牛顿力学、旋转运动和能量守恒的基础知识。通过问题解决和动手实验，该课程为物理科学的进一步学习建立了坚实基础。';
                 courseElements['course-chemistry'].textContent = 'AP化学课程深入探索化学原理、反应和实验技术。从原子结构到热力学和动力学，该课程帮助学生深入理解化学的核心概念，为任何STEM相关的学术路径打下坚实基础。';
                 courseElements['course-physics-c-mechanics'].textContent = 'AP物理C力学专注于经典力学的基本原理，包含运动学、牛顿律、能量和动量等主题。该课程结合微分，深入探讨力的应用与运动的数学表达，旨在为学生提供大学物理的坚实基础，尤其是工程或物理学相关专业的学生。';
+                document.querySelector('#ap-tutoring h2').textContent = 'AP 一对一辅导服务（500元 / $50 每小时）';
+                document.querySelector('#ap-tutoring .tutoring-box').innerHTML = `
+                    <h3>AP 一对一精品辅导服务｜KEQI 科技启迪</h3>
+                    <p><strong>价格：</strong>500元人民币 / 50美元 / 每小时<br>
+                    <em>✨ 首次试听享受9折优惠！</em></p>
+                    <p><strong>掌握AP课程，不只是死记硬背。</strong>我们提供真正“个性化”的学习体验。从微积分到物理化学，KEQI科技启迪的AP专业一对一辅导服务，帮助你精准突破短板，高效提分！</p>
+                    
+                    <h4>服务内容：</h4>
+                    <ul>
+                        <li>✅ <strong>课程类型：</strong> AP系列课程（微积分AB/BC、物理C、化学、统计等）</li>
+                        <li>🧑‍🏫 <strong>授课方式：</strong> Zoom / Google Meet 在线一对一教学</li>
+                        <li>🌍 <strong>语言支持：</strong> 中英文双语授课，配合图像讲解</li>
+                        <li>📄 <strong>配套服务：</strong> 课后总结、错题分析报告、随时答疑</li>
+                        <li>🕐 <strong>计费方式：</strong> 每小时 ¥500 / $50</li>
+                    </ul>
 
+                    <h4>适合人群：</h4>
+                    <ul>
+                        <li>📘 正在备考AP、需要提分的高中生</li>
+                        <li>📈 自学AP课程但缺乏清晰结构与引导的学生</li>
+                        <li>🌏 英语非母语、理解AP教材有困难的国际学生</li>
+                    </ul>
+
+                    <h4>教师优势：</h4>
+                    <ul>
+                        <li>🌟 导师团队包括美国竞赛奖项获得者、斯坦福大学新生、US Physics/USNCO国家级经历</li>
+                        <li>📚 拥有100+小时AP/竞赛课程教学经验</li>
+                        <li>🧠 擅长使用 Desmos、GeoGebra 等图形工具进行可视化教学</li>
+                    </ul>
+
+                    <h4>教学流程：</h4>
+                    <ol>
+                        <li>✅ 免费咨询与评估</li>
+                        <li>✅ 制定个性化学习计划</li>
+                        <li>✅ 安排一对一授课时间</li>
+                        <li>✅ 课后提供详细学习进度报告</li>
+                    </ol>
+                `;
                 document.querySelector('h1').textContent = '欢迎来到科技启迪教育工作室';
                 document.querySelector('#mission h2').textContent = '我们的使命';
                 document.querySelector('#courses h2').textContent = '我们的课程';
