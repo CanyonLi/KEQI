@@ -219,6 +219,13 @@
             padding: 40px 20px;
             width: 100%;
         }
+        #testimonials {
+            width: 60%;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
         #feedback-form-container { background-color: rgba(255, 255, 255, 0.8); padding: 30px; border-radius: 15px; width: 60%; margin: 0 auto; border: 4px solid #33527E; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center; }
         #feedback-form {
             display: grid;
@@ -352,6 +359,7 @@
                 <li><a href="#courses">Courses/课程</a></li>
                 <li><a href="#about">About Us/关于我们</a></li>
                 <li><a href="#mission">Our Mission/我们的使命</a></li>
+                <li><a href="#testimonials">Student Testimonials/学生测试</a></li>
                 <li><a href="#feedback">Feedback/反馈</a></li>
                 <li><a href="#contact">Contact/联系我们</a></li>
             </ul>
@@ -470,6 +478,23 @@
                     <li><strong>Yongqing Liang - Marketing Strategy & Platform Operations Manager:</strong><br>Yongqing is in charge of creating and implementing marketing strategies, managing customer service, and conducting market research. She manages the studio's online platform, handles student feedback, and oversees the official account's operations and aesthetics.</li>
                     <li><strong>Tianzhe Chen - Website & Platform Manager:</strong><br>Tianzhe manages the technical aspects of Tech Insight Studio, including the maintenance of the official website and online platforms. He also coordinates promotional activities and ensures the smooth execution of digital initiatives.</li>
                 </ul>
+            </div>
+        </section>
+        <section id="testimonials">
+            <h2>Student Testimonials</h2>
+            <div id="testimonials-content" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px; background-color: #fff; border: 4px solid #33527E; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <blockquote style="margin-bottom: 30px;">
+                    <p>"Thanks to Tech Insight Studio, I scored a 5 on AP Calculus BC! The visual tools made hard concepts so much easier."</p>
+                    <footer>— Alice W., California</footer>
+                </blockquote>
+                <blockquote style="margin-bottom: 30px;">
+                    <p>"As a non-native English speaker, I was so grateful for the bilingual resources. They helped me score high on AP Chemistry!"</p>
+                    <footer>— Li, Guangzhou, China</footer>
+                </blockquote>
+                <blockquote>
+                    <p>"The best part is the instant feedback. I knew exactly which topics I needed to focus on."</p>
+                    <footer>— Daniel M., Arizona</footer>
+                </blockquote>
             </div>
         </section>
         <section id="feedback">
@@ -594,6 +619,21 @@
                     <li><strong>陈添喆 网站与平台管理员:</strong><br> 添喆负责管理科技启达教育工作室的技术方面工作，包括维护官方网站和在线平台。他还协调宣传活动，确保数字项目的顺利执行。</li>
                 `;
                 document.querySelector('#contact h2').textContent = '联系我们';
+                document.querySelector('#testimonials h2').textContent = '学生评价';
+                document.getElementById('testimonials-content').innerHTML = `
+                    <blockquote style="margin-bottom: 30px;">
+                        <p>“多亏了 Tech Insight Studio，我在 AP 微积分 BC 考试中拿到了 5 分！这些可视化工具让我轻松理解了很多难点。”</p>
+                        <footer>— Alice W., 加州</footer>
+                    </blockquote>
+                    <blockquote style="margin-bottom: 30px;">
+                        <p>“作为一个英语不是母语的学生，我很感谢你们提供中英文双语资源，帮助我在 AP 化学中取得高分！”</p>
+                        <footer>— 李同学，中国广州</footer>
+                    </blockquote>
+                    <blockquote>
+                        <p>“我最喜欢的是即时反馈功能。我能立刻知道该集中攻克哪些知识点。”</p>
+                        <footer>— Daniel M., 亚利桑那州</footer>
+                    </blockquote>
+                `;
                 document.querySelector('#contact-us-text').innerHTML = '如果您有任何问题，请通过我们的联系表格联系我们，或者发送电子邮件至 <a href="mailto:contact@techinsightstudio.com">contact@techinsightstudio.com</a>。';
                 document.querySelector('#feedback h2').textContent = '反馈';
                 document.querySelector('#feedback-form-container p').textContent = '我们非常重视您的反馈！请分享您的想法，帮助我们改进。';
