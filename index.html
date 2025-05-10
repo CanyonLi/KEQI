@@ -190,6 +190,55 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: left;
         }
+
+        #social-media {
+        padding: 60px 20px;
+        margin-bottom: 80px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        #social-media h2 {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 15px 25px;
+        border-radius: 10px;
+        color: #33527E;
+        font-size: 2rem;
+        }
+
+        .social-content {
+        display: flex;
+        max-width: 1000px;
+        gap: 40px;
+        margin-top: 40px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        }
+
+        .social-text {
+        flex: 1 1 400px;
+        background-color: #ffffff;
+        border: 4px solid #33527E;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: left;
+        }
+
+        .social-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.2);
+        }
+
         #about {
             text-align: center;
             padding: 0;
@@ -347,6 +396,36 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+        @media (min-width: 768px) {
+            nav ul {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px 24px;
+                justify-items: center;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                list-style: none;
+            }
+
+            nav ul li a {
+                display: block;
+                width: 100%;
+                max-width: 220px;
+                box-sizing: border-box;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -528,6 +607,22 @@
                 </ol>
             </div>
         </section>
+        <section id="social-media">
+            <h2>Stay Connected — Free Resources, Events & Tips</h2>
+            <div class="social-content">
+              <div class="social-text">
+                <p>📕 <strong>LittleRedNote (小红书)：</strong> KEQI科技启迪<br>
+                Short videos, study tips, and real AP question breakdowns. Weekly free resources.</p>
+                <p>💬 <strong>WeChat Official Account：</strong> Keqitechsinsightstudio.wechat<br>
+                Follow us for downloadable notes, Q&A events, and special discounts.</p>
+                <p>📸 <strong>Instagram：</strong> @keqistudio_global<br>
+                Student spotlights, team news, and global education trends. 📌 Tag us to win tutoring discounts!</p>
+              </div>
+              <div class="social-image">
+                <img src="KEQI HAIBAO.png" alt="KEQI Social Media Poster">
+              </div>
+            </div>
+          </section>
         <section id="about">
             <h2>About Us</h2>
             <div id="about-us-text">
